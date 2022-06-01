@@ -1,0 +1,188 @@
+---
+title: "Tarea_06-Introducción-a-la-representación-gráfica"
+author: "jfdelosrios"
+date: "17/8/2021"
+output: pdf_document
+---
+
+
+
+# Ejercicio 1
+
+Con una sola instrucción, dibujad el gráfico de la función $y=x^2-3x+30$ entre $-15$ y $15$. De título, poned “Una parábola”. De etiquetas, en el eje 0X poned, en formato matemático, $x$; y en el eje 0Y, introducid $y=x^2-3x+30$, también en formato matemático. Tenéis que utilizar la función curve()
+
+```{r, fig.height=10}
+
+
+f <- function(x) {
+  x^2-3*x+30
+}
+
+curve(
+  x^2-3*x+30,
+  from=-15,
+  to=15,
+  xlab=expression(x),
+  ylab=expression(y==x^{2}-3*x+30),
+  xaxp = c(-15,15,20), 
+  yaxp = c(30,300,4-1),
+  main="Una parábola"
+)
+
+abline(h = c(f(-15)), lty = 2, col = "gray")
+abline(v = c(-15), lty = 2, col = "gray")
+
+abline(h = c(f(15)), lty = 2, col = "gray")
+abline(v = c(15), lty = 2, col = "gray")
+
+#cuando x=0
+abline(h = c(f(0)), lty = 2, col = "gray")
+abline(v = c(0), lty = 2, col = "gray")
+
+# cuando y es 0 no toca
+
+# dy/dx=2*x-3
+
+#cuando dy/dx = 0 -> x=3/2
+abline(h = c(f(3/2)), lty = 2, col = "gray")
+abline(v = c(3/2), lty = 2, col = "gray")
+
+
+
+```
+
+
+\newpage
+
+
+# Ejercicio 2
+
+Considerando lo que habéis obtenido en el ejercicio anterior y siendo $y = f(x) = x^2-3x+30$ e $I = [-15:15]$, si en vez de utilizar la función curve(), utilizamos la función plot(), ¿es correcta la sentencia plot(f(I)) para representar la curva f en el intervalo I? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia plot(f(I)) se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función f en R y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+
+
+La función f es definida como:
+
+```{r}
+f <- function(x) {
+  x^2-3*x+30
+}
+```
+
+La sentencia plot(f(I)), que representa a
+
+```{r}
+plot(
+    f(c(-15:15)),
+    xlab=expression(x),
+    ylab=expression(y==x^{2}-3*x+30),
+    main="Una parábola"
+  )
+```
+
+\newpage
+
+El cual es diferente al gráfico
+
+```{r}
+curve(
+  f,
+  from=-15,
+  to=15,
+  xlab=expression(x),
+  ylab=expression(y==x^{2}-3*x+30),
+  main="Una parábola"
+)
+
+```
+
+\newpage
+
+# Ejercicio 3
+
+Dibuja un gráfico semi-logarítmico de la función $y = 5\cdot 2^x$ entre -10 y 25. Utilizad la función curve(). Mostrad solo la etiqueta del eje 0Y, que ponga $y = 5\cdot 2^x$ en formato matemático.
+
+```{r}
+curve(5*2^x, from=-10, to=25, log="y", ylab=expression(y==5%.%2^x), xlab="")
+```
+
+\newpage
+
+# Ejercicio 4
+
+Dibuja el gráfico de la función y_1 = 3x utilizando la función curve(). Añade la curva y_2=-3x, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto (13,10)) que indique que la función 3x es la azul y la -3x verde.
+
+```{r}
+#plot(0,0,)
+
+curve(
+  3*x,
+  from=-10,
+  to=20,
+  main="2 rectas",
+  sub="Dos rectas con pendiente opuesto",
+  col="blue",
+  ylim = c(-60, 60),
+  xaxp = c(-10,20,4-1), 
+  yaxp = c(-60,60,5-1),
+  ylab=""
+  )
+ 
+curve(-3*x, add=TRUE, col="green")
+
+abline(h = seq(-60, 60, 30),
+       lty = 2, col = "gray")
+
+abline(v = seq(-10, 20, 10),
+       lty = 2, col = "gray")
+ 
+legend(
+  x=13, 
+  y=10, 
+  legend = c(expression("3x"), expression("-3x")), 
+  col = c("blue", "green"), 
+  lty=c("solid", "solid"),
+  text.width = 2
+  )
+
+
+```
+
+\newpage
+
+# Ejercicio 5
+
+Dad la instrucción que añada a un gráfico anterior la recta horizontal y = 0 de color rojo con un grosor de 5 puntos.
+
+```{r}
+plot(0,0,
+  col = "white",
+  xlab=expression(x),
+  ylab=expression(f(x)==0)
+  )
+abline(h=0, col="red",lwd=5)
+```
+
+\newpage
+
+# Ejercicio 6
+
+Dad la instrucción que añada a un gráfico anterior la recta y = 2x+7 de color azul con un grosor de 2 puntos.
+
+```{r}
+plot(
+  0,0,
+  col = "white",
+  xaxp = c(0,1,2-1), 
+  yaxp = c(0,9,9),
+  ylim = c(0, 2+7),
+  xlim = c(0, 1),
+  xlab=expression(x),
+  ylab=expression(2*x+7),
+  )
+
+abline(h = c(2,9), lty = 2, col = "gray")
+
+abline(v = c(0, 1), lty = 2, col = "gray")
+
+abline(2,7, col="blue",lwd=2)
+```

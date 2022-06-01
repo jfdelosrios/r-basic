@@ -1,0 +1,61 @@
+---
+title: "T3 2"
+author: "Jorge Fernando De Los Ríos"
+date: "18/5/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Pregunta 1
+
+```{r, echo=TRUE}
+A <- rbind(c(1,2,3,4), c(4,3,2,1), c(0,1,0,2), c(3,0,4,0))
+B <- rbind(c(4,3,2,1), c(0,3,0,4), c(1,2,3,4), c(0,1,0,2))
+AB <- A%*%B
+BA <- B%*%A
+t(A%*%B)
+t(B)%*%A
+solve(A%*%B)
+solve(A)%*%t(B)
+```
+&nbsp;
+$$A \cdot B =$$
+```{r, echo=FALSE}
+AB
+```
+
+
+&nbsp;
+&nbsp;
+$$B \cdot A=$$
+```{r, echo=FALSE}
+BA
+```
+
+&nbsp;&nbsp;
+
+# Ejercicio 2
+
+
+```{r, echo=TRUE}
+dni=c(1,0,3,1,1,2,8,2,7,2)
+
+t(dni) %*% dni
+sqrt(dni)
+sum(dni)
+
+```
+&nbsp;&nbsp;
+
+# Ejercicio 3
+
+```{r, echo=TRUE}
+name <- c("J","O","R","G","E","F","E","R","N","A","N","D","O","D","E","L","O","S","R","I","O","S")
+name[1:13]
+name[14:length(name)]
+sort(name)
+
+```

@@ -1,0 +1,197 @@
+---
+title: "Ejercicios - Estructuras de datos."
+author: "jfdelosrios"
+date: "16/8/2021"
+output: pdf_document
+---
+
+\newpage
+
+# Ejercicios - Estructuras de datos.
+
+\newpage
+
+## Básico
+
+
+### Punto 1
+Repite tu año de nacimiento 10 veces
+
+```{r}
+rep(1990,10)
+```
+
+
+### Punto 2
+
+Crea el vector que tenga como entradas 16,0,1,20,1,7,88,5,1,9, llámalo vec y modifica la cuarta entrada con la función fix() 
+
+```{r}
+vec <- c(16,0,1,20,1,7,88,5,1,9)
+vec
+#fix(vec) 
+```
+
+jfdelosrios: fix() no funciona en markdown R.
+
+\newpage
+
+## Secuencias
+
+### Punto 1
+
+Imprimid los números del 1 al 20
+
+```{r}
+seq(1,20)
+```
+
+### Punto 2
+
+Imprimid los 20 primeros números pares
+
+```{r}
+seq(2,20, by=2)
+```
+
+### Punto 3
+
+Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
+
+```{r}
+round(seq(17,98, length.out=30),4)
+```
+
+\newpage
+
+## Orden
+
+### Punto 1
+
+Combinad las dos funciones anteriores, sort y rev para crear una función que dado un vector x os lo devuelva ordenado en orden decreciente.
+
+```{r}
+decreciente = function(vector){ rev(sort(vector))}
+
+v = c(1,7,5,2,4,6,3)
+
+decreciente(v)
+```
+
+### Punto 2
+
+Razonad si aplicar primero sort y luego rev a un vector x daría en general el mismo resultado que aplicar primero rev y luego sort.
+
+```{r}
+v = c(1,7,5,2,4,6,3)
+```
+
+```{r}
+#aplicando sort y luego rev
+print(rev(sort(v)))
+```
+
+```{r}
+#Aplicando rev y luego sort
+print(sort(rev(v)))
+```
+
+Ambas salidas son diferentes, por consiguiente, el orden de estas funciones altera el resultado.
+
+### Punto 3
+
+Investigad la documentación de la función sort (recordad que podéis usar la sintaxis ?sort en la consola) para leer si cambiando algún argumento de la misma podéis obtener el mismo resultado que habéis programado en el primer ejercicio.
+
+```{r}
+decreciente = function(vector){ rev(sort(vector))}
+
+v = c(1,7,5,2,4,6,3)
+
+sort(v, decreasing = TRUE)
+```
+
+\newpage
+
+## Matrices: Cómo definirlas
+
+### Punto 1
+
+¿Cómo definirías una matriz constante? Es decir, ¿cómo definirías una matriz A tal que $\forall$ i=1,...,n;j=1,...,m, ai,j=k siendo $k \in \mathbb{R}$? Como R no admite incógnitas, prueba para el caso específico n=3,m=5,k=0
+
+```{r}
+matrix(rep(0, 3*5), nrow=3, byrow=TRUE)
+```
+
+
+### Punto 2
+
+Con el vector vec = (1,2,3,4,5,6,7,8,9,10,11,12) crea la matriz
+
+$$\begin{pmatrix}1 & 4 & 7 & 10\\ 2 & 5 & 8 & 11\\ 3 & 6 & 9 & 12\end{pmatrix}$$
+
+
+```{r}
+vec = c(1,2,3,4,5,6,7,8,9,10,11,12)
+
+matrix(vec, nrow=3, byrow=FALSE)
+```
+
+\newpage
+
+## Matrices: Operaciones
+
+Observad qué ocurre si, siendo $A = \begin{pmatrix}2 & 0 & 2\\ 1 & 2 & 3\\ 0 & 1 & 3\end{pmatrix}$ y $B = \begin{pmatrix}3 & 2 & 1\\ 1 & 0 & 0\\ 1 & 1 & 1\end{pmatrix}$, realizamos las operaciones $A \cdot B$, $A^2$ y $B^3$
+
+
+```{r}
+A = matrix(
+  c(2 , 0 , 2, 1 , 2 , 3, 0 , 1 , 3), 
+  nrow=3, 
+  byrow=TRUE
+  )
+  
+B = matrix(
+  c(3 , 2 , 1, 1 , 0 , 0, 1 , 1 , 1),
+  nrow=3, 
+  byrow=TRUE
+  )
+```
+
+$$A \cdot B$$
+```{r}
+A %*% B
+```
+
+$$A^2$$
+```{r}
+A %*% A
+```
+ 
+$$B^3$$
+```{r}
+B %*% B %*% B
+```
+
+\newpage
+
+## Matrices: Valores y vectores propios
+
+Comprobad, con los datos del ejemplo anterior, que si P es la matriz de vectores propios de M en columna y D la matriz diagonal cuyas entradas son los valores propios de M, entoces se cumple la siguiente igualdad llamada descomposición canónica: 
+
+$$M = P \cdot D \cdot P^{-1}$$
+```{r}
+M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
+
+print(M)
+
+P=eigen(M)$vectors
+
+D = diag(eigen(M)$values)
+
+print(P %*% D %*% solve(P))
+```
+
+LAs dos matrices son iguales.
+
+
+

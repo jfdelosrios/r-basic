@@ -1,0 +1,19 @@
+probabilidad condicional o conjunta
+
+
+variable independiente es con la que se marginan
+
+
+
+proporcion
+
+normalizada por
+
+
+que tan desproporcionado esta
+
+
+marginar es para eliminar desproporcion.
+
+
+eliminar "frecuencia relativa".
