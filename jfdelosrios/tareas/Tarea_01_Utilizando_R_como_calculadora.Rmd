@@ -20,7 +20,7 @@ output: pdf_document
 
 #+250000000 seg pedidos
 
-kl<-as.POSIXct("01/01/2018",format="%d/%m/%Y")-12+250000000
+kl <- as.POSIXct("01/01/2018", format="%d/%m/%Y") - 12 + 250e+6
 ```
 
 

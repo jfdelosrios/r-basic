@@ -16,7 +16,7 @@
 
 .example{
   color: white;
-  background-color: blue;
+  background-color: rgb(122, 122, 248);
   opacity: 0.5;
   font-size: 0.8em;
 }
@@ -53,5 +53,6 @@
   -webkit-border-radius: 10px 10px 10px 10px;
   border: 2px solid gray;
   background-color: #F2F2F2;
-  font-size: 0.7em
+  font-size: 0.7em;
+  margin: 2em;
 }

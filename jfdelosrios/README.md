@@ -22,9 +22,14 @@ Fetch and merge
 --------------------------
 
 
-Markdown pone el caracter - en vez de - en sus pdf. Si se pone el caracter - en el archivo Rmd, genera el siguiente error:
+Markdown pone el caracter - en vez de − en sus pdf. Si se pone el caracter - en el archivo Rmd, genera el siguiente error:
 
 ! Package inputenc Error: Unicode character − (U+2212)
 (inputenc)                not set up for use with LaTeX.
 
 Hay que cambiarlo por el caracter -
+
+
+em dash y en dash
+
+--------------------------
