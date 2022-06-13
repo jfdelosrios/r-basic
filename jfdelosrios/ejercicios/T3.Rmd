@@ -18,21 +18,21 @@ output: pdf_document
 Repite tu año de nacimiento 10 veces
 
 ```{r}
-rep(1990,10)
+rep(1990, 10)
 ```
 
 
 ### Punto 2
 
-Crea el vector que tenga como entradas 16,0,1,20,1,7,88,5,1,9, llámalo vec y modifica la cuarta entrada con la función fix() 
+Crea el vector que tenga como entradas 16, 0, 1, 20, 1, 7, 88, 5, 1, 9, llámalo vec y modifica la cuarta entrada con la función fix() 
 
 ```{r}
-vec <- c(16,0,1,20,1,7,88,5,1,9)
+vec <- c(16, 0, 1, 20, 1, 7, 88, 5, 1, 9)
 vec
 #fix(vec) 
 ```
 
-jfdelosrios: fix() no funciona en markdown R.
+*jfdelosrios: fix() no funciona en markdown R.*
 
 \newpage
 
@@ -43,7 +43,7 @@ jfdelosrios: fix() no funciona en markdown R.
 Imprimid los números del 1 al 20
 
 ```{r}
-seq(1,20)
+seq(1, 20)
 ```
 
 ### Punto 2
@@ -51,7 +51,7 @@ seq(1,20)
 Imprimid los 20 primeros números pares
 
 ```{r}
-seq(2,20, by=2)
+seq(2, 20, by = 2)
 ```
 
 ### Punto 3
@@ -59,7 +59,7 @@ seq(2,20, by=2)
 Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
 
 ```{r}
-round(seq(17,98, length.out=30),4)
+round(seq(17, 98, length.out = 30), 4)
 ```
 
 \newpage
@@ -73,7 +73,7 @@ Combinad las dos funciones anteriores, sort y rev para crear una función que da
 ```{r}
 decreciente = function(vector){ rev(sort(vector))}
 
-v = c(1,7,5,2,4,6,3)
+v = c(1, 7, 5, 2, 4, 6, 3)
 
 decreciente(v)
 ```
@@ -83,7 +83,7 @@ decreciente(v)
 Razonad si aplicar primero sort y luego rev a un vector x daría en general el mismo resultado que aplicar primero rev y luego sort.
 
 ```{r}
-v = c(1,7,5,2,4,6,3)
+v = c(1, 7, 5, 2, 4, 6, 3)
 ```
 
 ```{r}
@@ -105,7 +105,7 @@ Investigad la documentación de la función sort (recordad que podéis usar la s
 ```{r}
 decreciente = function(vector){ rev(sort(vector))}
 
-v = c(1,7,5,2,4,6,3)
+v = c(1, 7, 5, 2, 4, 6, 3)
 
 sort(v, decreasing = TRUE)
 ```
@@ -119,21 +119,25 @@ sort(v, decreasing = TRUE)
 ¿Cómo definirías una matriz constante? Es decir, ¿cómo definirías una matriz A tal que $\forall$ i=1,...,n;j=1,...,m, ai,j=k siendo $k \in \mathbb{R}$? Como R no admite incógnitas, prueba para el caso específico n=3,m=5,k=0
 
 ```{r}
-matrix(rep(0, 3*5), nrow=3, byrow=TRUE)
+n = 3
+m = 5
+k = 0
+
+matrix(k, nrow = 3, ncol = 5)
 ```
 
 
 ### Punto 2
 
-Con el vector vec = (1,2,3,4,5,6,7,8,9,10,11,12) crea la matriz
+Con el vector vec = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) crea la matriz
 
 $$\begin{pmatrix}1 & 4 & 7 & 10\\ 2 & 5 & 8 & 11\\ 3 & 6 & 9 & 12\end{pmatrix}$$
 
 
 ```{r}
-vec = c(1,2,3,4,5,6,7,8,9,10,11,12)
+vec = 1:12
 
-matrix(vec, nrow=3, byrow=FALSE)
+matrix(vec, nrow = 3, byrow = FALSE)
 ```
 
 \newpage
@@ -146,14 +150,14 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}2 & 0 & 2\\ 1 & 2 & 3\\ 0 & 
 ```{r}
 A = matrix(
   c(2 , 0 , 2, 1 , 2 , 3, 0 , 1 , 3), 
-  nrow=3, 
-  byrow=TRUE
+  nrow = 3, 
+  byrow = TRUE
   )
   
 B = matrix(
   c(3 , 2 , 1, 1 , 0 , 0, 1 , 1 , 1),
-  nrow=3, 
-  byrow=TRUE
+  nrow = 3, 
+  byrow = TRUE
   )
 ```
 
@@ -180,7 +184,7 @@ Comprobad, con los datos del ejemplo anterior, que si P es la matriz de vectores
 
 $$M = P \cdot D \cdot P^{-1}$$
 ```{r}
-M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
+M = rbind(c(2, 6, -8), c(0, 6, -3), c(0, 2, 1))
 
 print(M)
 
@@ -191,7 +195,7 @@ D = diag(eigen(M)$values)
 print(P %*% D %*% solve(P))
 ```
 
-LAs dos matrices son iguales.
+Las dos matrices son iguales.
 
 
 
