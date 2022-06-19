@@ -62,3 +62,11 @@ la función ```na.omit()``` tiene un atributo llamado ```"na.action"```
 
 A diferencia de python, se puede aplicar a una variable ```nom``` cosas como
 ```levels(nom) = c("f", "m", "t")```
+
+## Tema 4
+
+np.flatten no modifica el arreglo (vídeo La librería de Numpy y los arrays 17:37)
+
+palabra "is" en python
+
+video "68. Un poco de algebra lineal con Python", 17:00, el for se puede cambiar por M[:,0], ahora, si se desea que se muestre como columna M[:,0].reshape(3,1)
